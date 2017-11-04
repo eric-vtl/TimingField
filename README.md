@@ -23,7 +23,7 @@ $.fn.timingfield.defaults = {
     hoursText: 'H',
     minutesText: 'M',
     secondsText: 'S',
-    useTimestamp: false,
+    useTimestamp: true,
     daysVisible: true,
     hoursVisible: true,
     minutesVisible: true,
