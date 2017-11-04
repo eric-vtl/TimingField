@@ -9,21 +9,6 @@ Requirements
  * jQuery
  * Twitter Bootstrap
 
-Installation
-------------
-
-Installation with composer :
-
-```json
-    ...
-    "require": {
-        ...
-        "grimmlink/timingfield": "1.0",
-        ...
-    },
-    ...
-```
-
 Configuration
 -------------
 
@@ -31,11 +16,19 @@ This is the current available configuration :
 
 ```javascript
 $.fn.timingfield.defaults = {
-    maxHour:        23
-    width:          263,
-    hoursText:      'H',
-    minutesText:    'M',
-    secondsText:    'S'
+    maxHour: 23,
+    minutesInterval: 5,
+    width: '100%',
+    daysText: 'D',
+    hoursText: 'H',
+    minutesText: 'M',
+    secondsText: 'S',
+    useTimestamp: false,
+    daysVisible: true,
+    hoursVisible: true,
+    minutesVisible: true,
+    secondsVisible: true,
+    defaultValue: 300
 };
 ```
 
