@@ -8,6 +8,10 @@ Requirements
 
  * jQuery
  * Twitter Bootstrap
+ 
+Sample
+------
+![alt text](docs/timingfield.png)
 
 Configuration
 -------------
