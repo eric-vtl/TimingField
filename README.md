@@ -1,7 +1,7 @@
 TimingField
 =================
 
-A jquery plugin to transform a timestamp field into an positive/negative hours/minutes/seconds selector.
+A jquery plugin to transform a input field into (+/-) hours/minutes/seconds selector.
 
 Requirements
 ------------
