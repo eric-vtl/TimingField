@@ -42,13 +42,14 @@
                     this.elem.val(seconds);
                 }
             }
-
+            this.getSign().value = '+';
             this.getDays().value = this.tsToDays(this.elem.val());
             this.getHours().value = this.tsToHours(this.elem.val());
             this.getMinutes().value = this.tsToMinutes(this.elem.val());
             this.getSeconds().value = this.tsToSeconds(this.elem.val());
 
             this.tpl.width(this.settings.width);
+            this.tpl.find('.timingfield_sign   .input-group-addon').text(this.settings.signText);
             this.tpl.find('.timingfield_days   .input-group-addon').text(this.settings.daysText);
             this.tpl.find('.timingfield_hours   .input-group-addon').text(this.settings.hoursText);
             this.tpl.find('.timingfield_minutes .input-group-addon').text(this.settings.minutesText);
@@ -66,6 +67,8 @@
             ;
 
             // +/- triggers
+            this.tpl.find('.timingfield_sign   .timingfield_next').on('mousedown', $.proxy(this.upSign, this));
+            this.tpl.find('.timingfield_sign   .timingfield_prev').on('mousedown', $.proxy(this.downSign, this));
             this.tpl.find('.timingfield_days   .timingfield_next').on('mousedown', $.proxy(this.upDay, this));
             this.tpl.find('.timingfield_days   .timingfield_prev').on('mousedown', $.proxy(this.downDay, this));
             this.tpl.find('.timingfield_hours   .timingfield_next').on('mousedown', $.proxy(this.upHour, this));
@@ -76,13 +79,20 @@
             this.tpl.find('.timingfield_seconds .timingfield_prev').on('mousedown', $.proxy(this.downSec, this));
 
             // input triggers
+            this.tpl.find('.timingfield_sign   input').on('keyup', $.proxy(this.inputSign, this));
             this.tpl.find('.timingfield_days   input').on('keyup', $.proxy(this.inputDay, this));
             this.tpl.find('.timingfield_hours   input').on('keyup', $.proxy(this.inputHour, this));
             this.tpl.find('.timingfield_minutes input').on('keyup', $.proxy(this.inputMin, this));
             this.tpl.find('.timingfield_seconds input').on('keyup', $.proxy(this.inputSec, this));
 
             // Show/Hide certain boxes depending on settings
-            var numVisible = 4;
+            var numVisible = 5;
+            if (this.settings.signVisible) {
+                this.tpl.find('.timingfield_sign').show();
+            } else {
+                this.tpl.find('.timingfield_sign').hide();
+                numVisible--;
+            }
             if (this.settings.daysVisible) {
                 this.tpl.find('.timingfield_days').show();
             } else {
@@ -124,7 +134,11 @@
                 case 4:
                     width = '24%';
                     break;
+                case 5:
+                    width = '19%';
+                    break;
             }
+            this.tpl.find('.timingfield_sign').css('width', width);
             this.tpl.find('.timingfield_days').css('width', width);
             this.tpl.find('.timingfield_hours').css('width', width);
             this.tpl.find('.timingfield_minutes').css('width', width);
@@ -132,6 +146,9 @@
 
             // change on elem
             this.elem.on('change', $.proxy(this.change, this));
+        },
+        getSign: function () {
+            return this.tpl.find('.timingfield_sign input')[0];
         },
         getDays: function () {
             return this.tpl.find('.timingfield_days input')[0];
@@ -171,7 +188,8 @@
                     this.getMinutes().value,
                     this.getSeconds().value
                 );
-                this.elem.attr('value', newTs);
+                var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
+                this.elem.attr('value', newVal);
                 this.elem.val(newTs).trigger("change");
             } else {
                 var newTs = this.dhmsToHms(
@@ -180,9 +198,41 @@
                     this.getMinutes().value,
                     this.getSeconds().value
                 );
-                this.elem.attr('value', newTs);
+                var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
+                this.elem.attr('value', newVal);
                 this.elem.val(newTs).trigger("change");
             }
+        },
+        upSign: function () {
+            if (!this.disabled) {
+                if (this.getSign().value === '-') {
+                    this.getSign().value = '+';
+                    this.updateElem();
+                    return true;
+                }
+            }
+            return false;
+        },
+        downSign: function () {
+            if (!this.disabled) {
+                if (this.getSign().value === '+') {
+                    this.getSign().value = '-';
+                    this.updateElem();
+                    return true;
+                }
+            }
+            return false;
+        },
+        inputSign: function () {
+            if (!this.disabled) {
+                if (this.getSign().value === '+') {
+                    this.getSign().value = '-';
+                } else {
+                    this.getSign().value = '+';
+                }
+            }
+
+            this.updateElem();
         },
         upDay: function () {
             if (!this.disabled) {
@@ -354,7 +404,7 @@
             } else {
                 this.enable();
             }
-        },
+        }
     };
 
     $.fn.timingfield = function (options) {
@@ -376,11 +426,13 @@
         maxHour: 23,
         minutesInterval: 5,
         width: '100%',
+        signText: '+/-',
         daysText: 'D',
         hoursText: 'H',
         minutesText: 'M',
         secondsText: 'S',
         useTimestamp: true,
+        signVisible: true,
         daysVisible: true,
         hoursVisible: true,
         minutesVisible: true,
@@ -389,6 +441,14 @@
     };
 
     $.fn.timingfield.template = '<div class="timingfield">\
+        <div class="timingfield_sign">\
+            <button type="button" class="timingfield_next btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>\
+            <div class="input-group">\
+                <input type="text" class="form-control">\
+                <span class="input-group-addon"></span>\
+            </div>\
+            <button type="button" class="timingfield_prev btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></button>\
+        </div>\
         <div class="timingfield_days">\
             <button type="button" class="timingfield_next btn btn-default btn-xs btn-block" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>\
             <div class="input-group">\
@@ -431,4 +491,4 @@ Number.prototype.pad = function (size) {
         s = "0" + s;
     }
     return s;
-}
+};

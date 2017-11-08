@@ -1,3 +1,4 @@
+.timingfield .timingfield_sign,
 .timingfield .timingfield_days,
 .timingfield .timingfield_hours,
 .timingfield .timingfield_minutes,
@@ -5,6 +6,7 @@
     display: inline-block;
 }
 
+.timingfield .timingfield_sign .timingfield_next,
 .timingfield .timingfield_days .timingfield_next,
 .timingfield .timingfield_hours .timingfield_next,
 .timingfield .timingfield_minutes .timingfield_next,
@@ -13,6 +15,7 @@
     border-bottom: 0 none;
 }
 
+.timingfield .timingfield_sign .input-group,
 .timingfield .timingfield_days .input-group,
 .timingfield .timingfield_hours .input-group,
 .timingfield .timingfield_minutes .input-group,
@@ -20,6 +23,8 @@
     width: 100%;
 }
 
+.timingfield .timingfield_sign .input-group input,
+.timingfield .timingfield_sign .input-group .input-group-addon,
 .timingfield .timingfield_days .input-group input,
 .timingfield .timingfield_days .input-group .input-group-addon,
 .timingfield .timingfield_hours .input-group input,
@@ -33,6 +38,7 @@
     padding: 0;
 }
 
+.timingfield .timingfield_sign .input-group .input-group-addon,
 .timingfield .timingfield_days .input-group .input-group-addon,
 .timingfield .timingfield_hours .input-group .input-group-addon,
 .timingfield .timingfield_minutes .input-group .input-group-addon,
@@ -40,6 +46,7 @@
     width: 50%;
 }
 
+.timingfield .timingfield_sign .timingfield_prev,
 .timingfield .timingfield_days .timingfield_prev,
 .timingfield .timingfield_hours .timingfield_prev,
 .timingfield .timingfield_minutes .timingfield_prev,
