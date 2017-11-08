@@ -3,7 +3,7 @@
 .timingfield .timingfield_hours,
 .timingfield .timingfield_minutes,
 .timingfield .timingfield_seconds {
-    display: inline-block;
+  display: inline-block;
 }
 
 .timingfield .timingfield_sign .timingfield_next,
@@ -11,8 +11,8 @@
 .timingfield .timingfield_hours .timingfield_next,
 .timingfield .timingfield_minutes .timingfield_next,
 .timingfield .timingfield_seconds .timingfield_next {
-    border-radius: 3px 3px 0 0;
-    border-bottom: 0 none;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 0 none;
 }
 
 .timingfield .timingfield_sign .input-group,
@@ -20,7 +20,7 @@
 .timingfield .timingfield_hours .input-group,
 .timingfield .timingfield_minutes .input-group,
 .timingfield .timingfield_seconds .input-group {
-    width: 100%;
+  width: 100%;
 }
 
 .timingfield .timingfield_sign .input-group input,
@@ -33,9 +33,9 @@
 .timingfield .timingfield_minutes .input-group .input-group-addon,
 .timingfield .timingfield_seconds .input-group input,
 .timingfield .timingfield_seconds .input-group .input-group-addon {
-    border-radius: 0;
-    text-align: center;
-    padding: 0;
+  border-radius: 0;
+  text-align: center;
+  padding: 0;
 }
 
 .timingfield .timingfield_sign .input-group .input-group-addon,
@@ -43,7 +43,7 @@
 .timingfield .timingfield_hours .input-group .input-group-addon,
 .timingfield .timingfield_minutes .input-group .input-group-addon,
 .timingfield .timingfield_seconds .input-group .input-group-addon {
-    width: 50%;
+  width: 50%;
 }
 
 .timingfield .timingfield_sign .timingfield_prev,
@@ -51,6 +51,6 @@
 .timingfield .timingfield_hours .timingfield_prev,
 .timingfield .timingfield_minutes .timingfield_prev,
 .timingfield .timingfield_seconds .timingfield_prev {
-    border-radius: 0 0 3px 3px;
-    border-top: 0 none;
+  border-radius: 0 0 3px 3px;
+  border-top: 0 none;
 }
