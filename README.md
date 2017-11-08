@@ -1,7 +1,7 @@
 TimingField
 =================
 
-A jquery plugin to transform a timestamp field into an hours/minutes/seconds selector.
+A jquery plugin to transform a timestamp field into an positive/negative hours/minutes/seconds selector.
 
 Requirements
 ------------
@@ -19,11 +19,13 @@ $.fn.timingfield.defaults = {
     maxHour: 23,
     minutesInterval: 5,
     width: '100%',
+    signText: '+/-',
     daysText: 'D',
     hoursText: 'H',
     minutesText: 'M',
     secondsText: 'S',
     useTimestamp: true,
+    signVisible: true,
     daysVisible: true,
     hoursVisible: true,
     minutesVisible: true,
