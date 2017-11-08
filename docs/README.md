@@ -11,7 +11,7 @@ Requirements
  
 Sample
 ------
-![alt text](docs/timingfield.png)
+![TimingField sample image](./timingfield.png)
 
 Configuration
 -------------
