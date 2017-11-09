@@ -1,7 +1,8 @@
 TimingField
 =================
 
-A jquery plugin to transform a input field into (+/-) hours/minutes/seconds selector.
+A jquery plugin to transform a input field into (+/-) hours/minutes/seconds selector.  
+Field value output as (+/-)SECONDS or (+/-)HH:MM:SS.
 
 Requirements
 ------------
@@ -12,6 +13,12 @@ Requirements
 Sample
 ------
 ![TimingField sample image](docs/timingfield.png)
+
+With useTimestamp: true - value output in seconds
+  *<input value="+86400" ... >
+  
+With useTimestamp: false - value output in HH:MM:SS
+  *<input value="+24:00:00" ... >
 
 Configuration
 -------------
