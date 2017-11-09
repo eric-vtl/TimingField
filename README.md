@@ -14,11 +14,11 @@ Sample
 ------
 ![TimingField sample image](docs/timingfield.png)
 
-With useTimestamp: true - value output in seconds
-  *<input value="+86400" ... >
+With useTimestamp: true the text input value is output as seconds
+  * <input value="+86400" ... >
   
-With useTimestamp: false - value output in HH:MM:SS
-  *<input value="+24:00:00" ... >
+With useTimestamp: false the text input value is output as HH:MM:SS
+  * <input value="+24:00:00" ... >
 
 Configuration
 -------------
