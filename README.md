@@ -1,7 +1,7 @@
 TimingField
 =================
 
-A jquery plugin to transform a input field into (+/-) hours/minutes/seconds selector.  
+A jquery plugin to transform a input field into (+/-) hours/minutes/seconds selector.
 Field value output as (+/-)SECONDS or (+/-)HH:MM:SS.
 
 Requirements
@@ -9,16 +9,16 @@ Requirements
 
  * jQuery
  * Twitter Bootstrap
- 
+
 Sample
 ------
 ![TimingField sample image](docs/timingfield.png)
 
 With useTimestamp: true the text input value is output as seconds
-  * <input value="+86400" ... >
-  
+  * <input value="86400" ... >
+
 With useTimestamp: false the text input value is output as HH:MM:SS
-  * <input value="+24:00:00" ... >
+  * <input value="24:00:00" ... >
 
 Configuration
 -------------
