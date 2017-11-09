@@ -42,7 +42,8 @@
           this.elem.val(seconds);
         }
       }
-      this.getSign().value = '+';
+
+      this.getSign().value = this.tsToSign(this.elem.val());
       this.getDays().value = this.tsToDays(this.elem.val());
       this.getHours().value = this.tsToHours(this.elem.val());
       this.getMinutes().value = this.tsToMinutes(this.elem.val());
@@ -162,17 +163,20 @@
     getSeconds: function () {
       return this.tpl.find('.timingfield_seconds input')[0];
     },
+    tsToSign: function (timestamp) {
+      return (timestamp.charAt(0) === '-') ? '-' : '+';
+    },
     tsToDays: function (timestamp) {
-      return parseInt(Math.floor(timestamp / 86400)).pad(2);
+      return parseInt(Math.floor(this.stripSign(timestamp) / 86400));
     },
     tsToHours: function (timestamp) {
-      return parseInt(Math.floor((timestamp % 86400) / 3600)).pad(2);
+      return parseInt(Math.floor((this.stripSign(timestamp) % 86400) / 3600));
     },
     tsToMinutes: function (timestamp) {
-      return parseInt(Math.floor(((timestamp % 86400) % 3600) / 60)).pad(2);
+      return parseInt(Math.floor(((this.stripSign(timestamp) % 86400) % 3600) / 60));
     },
     tsToSeconds: function (timestamp) {
-      return parseInt(((timestamp % 86400) % 3600) % 60).pad(2);
+      return parseInt(((this.stripSign(timestamp) % 86400) % 3600) % 60);
     },
     dhmsToTimestamp: function (d, h, m, s) {
       return (parseInt(d) * 3600 * 24) + (parseInt(h) * 3600) + (parseInt(m) * 60) + parseInt(s);
@@ -188,7 +192,7 @@
                 this.getMinutes().value,
                 this.getSeconds().value
                 );
-        var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
+        var newVal = this.computeSign() + newTs;
         this.elem.attr('value', newVal);
         this.elem.val(newVal).trigger("change");
       } else {
@@ -198,10 +202,24 @@
                 this.getMinutes().value,
                 this.getSeconds().value
                 );
-        var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
+        var newVal = this.computeSign() + newTs;
         this.elem.attr('value', newVal);
         this.elem.val(newVal).trigger("change");
       }
+    },
+    stripSign: function(timestamp) {
+      return (this.hasSign()) ? timestamp.slice(1) : timestamp;
+    },
+    hasSign: function() {
+      var val = this.elem.val();
+      return (val.charAt(0) === '+' || val.charAt(0) === '-') ? true : false;
+    },
+    computeSign: function() {
+      if (!this.settings.signVisible) {
+        return '';
+      }
+      var signVal = (this.getSign().value === '-') ? '-' : '';
+      return signVal;
     },
     upSign: function () {
       if (!this.disabled) {
@@ -225,7 +243,7 @@
     },
     inputSign: function () {
       if (!this.disabled) {
-        if (this.getSign().value === '+') {
+        if (this.getSign().value === '+' || this.getSign().value === '') {
           this.getSign().value = '-';
         } else {
           this.getSign().value = '+';
