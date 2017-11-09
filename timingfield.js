@@ -190,7 +190,7 @@
                 );
         var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
         this.elem.attr('value', newVal);
-        this.elem.val(newTs).trigger("change");
+        this.elem.val(newVal).trigger("change");
       } else {
         var newTs = this.dhmsToHms(
                 this.getDays().value,
@@ -200,7 +200,7 @@
                 );
         var newVal = (this.settings.signVisible) ? this.getSign().value + newTs : newTs;
         this.elem.attr('value', newVal);
-        this.elem.val(newTs).trigger("change");
+        this.elem.val(newVal).trigger("change");
       }
     },
     upSign: function () {
