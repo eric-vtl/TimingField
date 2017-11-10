@@ -208,14 +208,14 @@
         this.elem.val(newVal).trigger("change");
       }
     },
-    stripSign: function(timestamp) {
+    stripSign: function (timestamp) {
       return (this.hasSign()) ? timestamp.slice(1) : timestamp;
     },
-    hasSign: function() {
+    hasSign: function () {
       var val = this.elem.val();
       return (val.charAt(0) === '+' || val.charAt(0) === '-') ? true : false;
     },
-    computeSign: function() {
+    computeSign: function () {
       if (!this.settings.signVisible) {
         return '';
       }
@@ -256,9 +256,9 @@
     upDay: function () {
       if (!this.disabled) {
         //if (this.getDays().value < this.settings.maxHour) {
-          this.getDays().value = parseInt(this.getDays().value) + 1;
-          this.updateElem();
-          return true;
+        this.getDays().value = parseInt(this.getDays().value) + 1;
+        this.updateElem();
+        return true;
         //}
       }
       return false;
