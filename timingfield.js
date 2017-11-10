@@ -11,6 +11,7 @@
 
   TimingField.prototype = {
     init: function () {
+      //console.log('timingfield');
       this.elem.after(this.tpl);
       this.elem.hide();
       var timeoutId = 0;
@@ -254,11 +255,11 @@
     },
     upDay: function () {
       if (!this.disabled) {
-        if (this.getDays().value < this.settings.maxHour) {
+        //if (this.getDays().value < this.settings.maxHour) {
           this.getDays().value = parseInt(this.getDays().value) + 1;
           this.updateElem();
           return true;
-        }
+        //}
       }
       return false;
     },
